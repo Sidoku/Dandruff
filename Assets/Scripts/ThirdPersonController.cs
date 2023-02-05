@@ -228,7 +228,7 @@ namespace StarterAssets
                 TouchingInfectedArea = true;
                 _other = other;
             }
-            if(other.CompareTag("hand") || other.CompareTag("Sanitized"))
+            else if(other.CompareTag("hand") || other.CompareTag("Sanitized"))
                 death();
         }
         private void ReduceAlpha()

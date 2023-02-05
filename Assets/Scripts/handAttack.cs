@@ -6,10 +6,17 @@ public class handAttack : MonoBehaviour
 {
     [SerializeField] private bool handAttackCheck = false;
     [SerializeField] private Animator anim;
+    [SerializeField] private Vector2 playerPosition;
+
+    private GameObject playerObj = null;
 
     // Start is called before the first frame update
     void Start()
     {
+        if (playerObj == null)
+        {
+            playerObj = GameObject.FindGameObjectWithTag("Player");
+        }
         StartCoroutine(RandomAttackTimer());
     }
 
@@ -22,7 +29,8 @@ public class handAttack : MonoBehaviour
     }
     void AttackPlayer()
     {
-        
+        // Go to player position and scratch
+        playerPosition = playerObj.transform.position;
     }
     IEnumerator RandomAttackTimer()
     {
