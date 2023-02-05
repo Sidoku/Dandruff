@@ -597,6 +597,7 @@ GameObject:
   - component: {fileID: 45421908}
   - component: {fileID: 45421907}
   - component: {fileID: 45421906}
+  - component: {fileID: 45421910}
   m_Layer: 10
   m_Name: Plane
   m_TagString: InfectedArea
@@ -683,6 +684,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &45421910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 45421905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04c48e6896ed41b4aa576fe952af746a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &45659233
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28632,6 +28645,7 @@ MonoBehaviour:
   handAttackCheck: 0
   anim: {fileID: 1770498704}
   playerPosition: {x: 0, y: 0}
+  InfectedAreaPosition: {x: 0, y: 0}
   speed: 0.01
   startMarker: {fileID: 1770498705}
 --- !u!95 &1770498704

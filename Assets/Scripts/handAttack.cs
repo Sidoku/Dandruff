@@ -11,7 +11,9 @@ public class handAttack : MonoBehaviour
     public float speed = 1.0F;
     public Transform startMarker;
     private float startTime;
-    private float journeyLength;
+    private float journeyLength;    [SerializeField] private Vector2 InfectedAreaPosition;
+
+    private GameObject[] InfectedAreaObj = null;
     private GameObject playerObj = null;
 
     // Start is called before the first frame update
@@ -20,6 +22,11 @@ public class handAttack : MonoBehaviour
         if (playerObj == null)
         {
             playerObj = GameObject.FindGameObjectWithTag("Player");
+        }
+
+        if (InfectedAreaObj == null)
+        {
+            InfectedAreaObj = GameObject.FindGameObjectsWithTag("InfectedArea");
         }
         StartCoroutine(RandomAttackTimer());
     }
@@ -31,9 +38,23 @@ public class handAttack : MonoBehaviour
             anim.SetTrigger("Scratch");
             HandPosUpdate();
         }
+        for ( int i = 0; i < InfectedAreaObj.Length; ++i)
+        {
+            if (InfectedAreaObj[i].GetComponent<Renderer>().material.GetColor("_BaseColor").a > 0.9f)
+            {
+                InfectedAreaPosition = InfectedAreaObj[i].transform.position;
+                ScratchInfectedArea();
+            }
+        }
+    }
+
+    void ScratchInfectedArea()
+    {
+        // Go to Infected area position and play scratch animation
 
 
     }
+
     void AttackPlayer()
     {
         // Go to player position and scratch
