@@ -6,7 +6,8 @@ public class Pistol : MonoBehaviour
 {
 
     public Animator animator;
-    int pistolID;
+    public int pistolID;
+    public bool isAttacking;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,9 +20,11 @@ public class Pistol : MonoBehaviour
         if(Input.GetMouseButtonDown(0))
         {
             animator.SetBool(pistolID, true);
+            isAttacking = true;
         }else
         {
             animator.SetBool(pistolID, false);
+            isAttacking = false;
         }
             
     }

@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Threading;
+using Unity.VisualScripting;
+using UnityEngine;
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 using UnityEngine.InputSystem;
 #endif
@@ -59,6 +61,12 @@ namespace StarterAssets
         [Tooltip("What layers the character uses as ground")]
         public LayerMask GroundLayers;
 
+        [Tooltip("Player touching infected area")]
+        public bool TouchingInfectedArea = false;
+
+        [Tooltip("What layers the characters uses as infected planes")]
+        public LayerMask InfectedLayers;
+
         [Header("Cinemachine")]
         [Tooltip("The follow target set in the Cinemachine Virtual Camera that the camera will follow")]
         public GameObject CinemachineCameraTarget;
@@ -86,6 +94,12 @@ namespace StarterAssets
         private float _rotationVelocity;
         private float _verticalVelocity;
         private float _terminalVelocity = 53.0f;
+
+        //Infected area
+        private Material mMaterial;
+
+        private Collider _other;
+        private bool isMouseDown = false;
 
         // timeout deltatime
         private float _jumpTimeoutDelta;
@@ -159,6 +173,7 @@ namespace StarterAssets
             JumpAndGravity();
             GroundedCheck();
             Move();
+            ReduceAlpha();
         }
 
         private void LateUpdate()
@@ -189,6 +204,44 @@ namespace StarterAssets
                 _animator.SetBool(_animIDGrounded, Grounded);
            // }
         }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            Debug.Log("Entered collision");
+            Debug.Log(other.tag);
+            if (other.CompareTag("InfectedArea"))
+            {
+                TouchingInfectedArea = true;
+                _other = other;
+            }
+        }
+
+        private void ReduceAlpha()
+        {
+           // Debug.Log("Entered infected area");
+           // Debug.Log(TouchingInfectedArea);
+                if (Input.GetMouseButtonDown(0))
+                {
+                isMouseDown = true;
+                    Debug.Log("Reducing alpha");
+                    Color color = _other.gameObject.GetComponent<Renderer>().material.GetColor("_BaseColor");
+                Debug.Log(color.a) ;
+                if(color.a > 0)
+                {
+                    color.a -= 20f * Time.deltaTime;
+                }
+                    _other.gameObject.GetComponent<Renderer>().material.SetColor("_BaseColor", color);
+                }else if (Input.GetMouseButtonUp(0))
+            {
+                isMouseDown = false;
+            }
+        }
+        private void OnTriggerExit(Collider other)
+        {
+            Debug.Log("Exiting Infected area");
+            TouchingInfectedArea = false;
+        }
+
 
         private void CameraRotation()
         {
