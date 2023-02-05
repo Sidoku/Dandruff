@@ -95,11 +95,16 @@ namespace StarterAssets
         private float _verticalVelocity;
         private float _terminalVelocity = 53.0f;
 
-        //Infected area
+        // Infected area
         private Material mMaterial;
+        private float _alphaIncreaseValue = 2.0f;
 
         private Collider _other;
-        private bool isMouseDown = false;
+       // private bool isMouseDown = false;
+
+        // Pistol animation
+        public int pistolID;
+        private bool isAttacking =false;
 
         // timeout deltatime
         private float _jumpTimeoutDelta;
@@ -160,6 +165,7 @@ namespace StarterAssets
 #endif
 
             AssignAnimationIDs();
+            pistolID = Animator.StringToHash("pistol");
 
             // reset our timeouts on start
             _jumpTimeoutDelta = JumpTimeout;
@@ -218,22 +224,24 @@ namespace StarterAssets
 
         private void ReduceAlpha()
         {
-           // Debug.Log("Entered infected area");
-           // Debug.Log(TouchingInfectedArea);
                 if (Input.GetMouseButtonDown(0))
                 {
-                isMouseDown = true;
-                    Debug.Log("Reducing alpha");
-                    Color color = _other.gameObject.GetComponent<Renderer>().material.GetColor("_BaseColor");
-                Debug.Log(color.a) ;
-                if(color.a > 0)
+                _animator.SetBool(pistolID, true);
+               if(_animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.3)
                 {
-                    color.a -= 20f * Time.deltaTime;
-                }
+                    isAttacking = true;
+                    Color color = _other.gameObject.GetComponent<Renderer>().material.GetColor("_BaseColor");
+                    Debug.Log(color.a);
+                    if (color.a > 0)
+                    {
+                        color.a += _alphaIncreaseValue * Time.deltaTime;
+                    }
                     _other.gameObject.GetComponent<Renderer>().material.SetColor("_BaseColor", color);
+                }
                 }else if (Input.GetMouseButtonUp(0))
             {
-                isMouseDown = false;
+                _animator.SetBool(pistolID, false);
+                isAttacking = false;
             }
         }
         private void OnTriggerExit(Collider other)
