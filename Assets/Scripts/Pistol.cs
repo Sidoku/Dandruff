@@ -8,6 +8,7 @@ public class Pistol : MonoBehaviour
     public Animator animator;
     public int pistolID;
     public bool isAttacking;
+    public AudioSource playerAudio;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +27,17 @@ public class Pistol : MonoBehaviour
             animator.SetBool(pistolID, false);
             isAttacking = false;
         }
+
+        if(isAttacking)
+        {
+            StartCoroutine(PlayAudio());
+        }
             
+    }
+
+    IEnumerator PlayAudio()
+    {
+        yield return new WaitForSeconds(1);
+        playerAudio.Play();
     }
 }

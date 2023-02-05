@@ -100,7 +100,7 @@ namespace StarterAssets
 
         // Infected area
         private Material mMaterial;
-        private float _alphaIncreaseValue = 2.0f;
+        private float _alphaIncreaseValue = 20.0f;
 
         private Collider _other;
        // private bool isMouseDown = false;
