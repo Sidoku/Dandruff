@@ -16,6 +16,9 @@ namespace StarterAssets
 #endif
     public class ThirdPersonController : MonoBehaviour
     {
+
+        public static int playerScore = 0;
+
         [Header("Player")]
         [Tooltip("Move speed of the character in m/s")]
         public float MoveSpeed = 2.0f;
@@ -182,6 +185,11 @@ namespace StarterAssets
             ReduceAlpha();
         }
 
+        private void death(){
+            Debug.Log("Death");
+
+            UnityEngine.SceneManagement.SceneManager.LoadScene("EndGame");
+        }
         private void LateUpdate()
         {
             CameraRotation();
@@ -220,8 +228,9 @@ namespace StarterAssets
                 TouchingInfectedArea = true;
                 _other = other;
             }
+            if(other.CompareTag("hand") || other.CompareTag("sanitized"))
+                death();
         }
-
         private void ReduceAlpha()
         {
                 if (Input.GetMouseButtonDown(0))

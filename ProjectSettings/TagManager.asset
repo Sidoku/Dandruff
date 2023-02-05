@@ -6,6 +6,8 @@ TagManager:
   tags:
   - CinemachineTarget
   - InfectedArea
+  - hand
+  - sanitized
   layers:
   - Default
   - TransparentFX
