@@ -17,7 +17,7 @@ namespace StarterAssets
     public class ThirdPersonController : MonoBehaviour
     {
 
-        public static int playerScore = 0;
+        public static int playerScore = 5;
 
         [Header("Player")]
         [Tooltip("Move speed of the character in m/s")]
@@ -187,8 +187,9 @@ namespace StarterAssets
 
         private void death(){
             Debug.Log("Death");
+            PlayerPrefs.SetInt("score", playerScore);
 
-            UnityEngine.SceneManagement.SceneManager.LoadScene("EndGame");
+            UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("EndGame");
         }
         private void LateUpdate()
         {

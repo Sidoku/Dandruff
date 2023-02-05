@@ -18,7 +18,7 @@ public class EndGameMenu : MonoBehaviour
 {
 
     [SerializeField] private TextMeshProUGUI scoreBoard;
-    ThirdPersonController va = new ThirdPersonController();
+    ThirdPersonController player = new ThirdPersonController();
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +30,7 @@ public class EndGameMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //scoreBoard.text = va.playerScore;
+        scoreBoard.text = PlayerPrefs.GetInt("score").ToString();
 
     }
 
