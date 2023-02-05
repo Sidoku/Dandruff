@@ -188,7 +188,6 @@ namespace StarterAssets
         private void death(){
             Debug.Log("Death");
             PlayerPrefs.SetInt("score", playerScore);
-
             UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("EndGame");
         }
         private void LateUpdate()

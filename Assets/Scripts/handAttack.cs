@@ -11,7 +11,6 @@ public class handAttack : MonoBehaviour
     void Start()
     {
         StartCoroutine(RandomAttackTimer());
-
     }
 
     // Update is called once per frame
