@@ -28410,7 +28410,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &1766155549
 Animator:
-  serializedVersion: 5
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -28427,7 +28427,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &1766155550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28645,12 +28645,12 @@ MonoBehaviour:
   handAttackCheck: 0
   anim: {fileID: 1770498704}
   playerPosition: {x: 0, y: 0}
-  InfectedAreaPosition: {x: 0, y: 0}
-  speed: 0.01
+  speed: 0.4
   startMarker: {fileID: 1770498705}
+  InfectedAreaPosition: {x: 0, y: 0}
 --- !u!95 &1770498704
 Animator:
-  serializedVersion: 5
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -28667,7 +28667,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &1770498705 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 05737de7a07d3344a92e8ed5d0d07043,
