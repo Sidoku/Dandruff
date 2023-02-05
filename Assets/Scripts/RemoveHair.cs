@@ -11,8 +11,10 @@ public class RemoveHair : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Hair"))
         {
+            Debug.Log(other.gameObject.name);
             hairObj.Append(other.gameObject);
-        } else if (other.gameObject.name == "HandAnimations" && hairObj != null)
+        }
+        else if (other.gameObject.name == "HandAnimations" && hairObj != null && gameObject.GetComponent<Renderer>().material.GetColor("_BaseColor").a > 0.9f)
         {
             for (int i = 0; i < hairObj.Length; ++i)
             {
