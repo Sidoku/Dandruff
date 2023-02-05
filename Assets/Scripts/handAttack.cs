@@ -5,6 +5,8 @@ using UnityEngine;
 public class handAttack : MonoBehaviour
 {
     [SerializeField] private bool handAttackCheck = false;
+    [SerializeField] private Animator anim;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +18,7 @@ public class handAttack : MonoBehaviour
     void Update()
     {
         if(handAttackCheck == true){
-
+            anim.SetTrigger("Scratch");
         }
     }
     void AttackPlayer()
@@ -29,7 +31,6 @@ public class handAttack : MonoBehaviour
         {
             AttackPlayer();
             yield return new WaitForSeconds(Random.Range(1, 5));
-
         }
     }
 }
