@@ -9,6 +9,7 @@ TagManager:
   - CinemachineTarget
   - Sanitized
   - Hair
+  - safeZone
   layers:
   - Default
   - TransparentFX

@@ -221,15 +221,15 @@ namespace StarterAssets
 
         private void OnTriggerEnter(Collider other)
         {
-            Debug.Log("Entered collision");
-            Debug.Log(other.tag);
+            Debug.Log("Entered collider" + other.tag);
             if (other.CompareTag("InfectedArea"))
             {
                 TouchingInfectedArea = true;
                 _other = other;
             }
-            //else if(other.CompareTag("hand") || other.CompareTag("Sanitized"))
-                //death();
+            else if(other.CompareTag("hand") || other.CompareTag("Sanitized"))
+                death();
+            
         }
         private void ReduceAlpha()
         {
@@ -255,8 +255,12 @@ namespace StarterAssets
         }
         private void OnTriggerExit(Collider other)
         {
-            Debug.Log("Exiting Infected area");
+            Debug.Log("Exiting safe area");
             TouchingInfectedArea = false;
+            if (other.CompareTag("safeZone"))
+            {
+                death();
+            }
         }
 
 
