@@ -6,8 +6,12 @@ TagManager:
   tags:
   - CinemachineTarget
   - InfectedArea
+<<<<<<< Updated upstream
   - hand
   - sanitized
+=======
+  - Hair
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX
