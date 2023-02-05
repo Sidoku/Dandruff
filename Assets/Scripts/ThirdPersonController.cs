@@ -17,7 +17,7 @@ namespace StarterAssets
     public class ThirdPersonController : MonoBehaviour
     {
 
-        public static int playerScore = 5;
+        public static int playerScore = 0;
 
         [Header("Player")]
         [Tooltip("Move speed of the character in m/s")]
